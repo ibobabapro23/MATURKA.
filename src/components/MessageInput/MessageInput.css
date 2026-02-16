@@ -1,0 +1,142 @@
+/* ===== Message Input Styles ===== */
+
+.input-area {
+    padding: 20px 24px 28px;
+    background: linear-gradient(to top, var(--bg-primary) 85%, transparent);
+    position: relative;
+}
+
+.input-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.input-wrapper {
+    display: flex;
+    align-items: flex-end;
+    gap: 14px;
+    padding: 14px 18px;
+    background: var(--bg-secondary);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    transition: all var(--transition-fast);
+    position: relative;
+    overflow: hidden;
+}
+
+.input-wrapper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--accent-gradient);
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+}
+
+.input-wrapper:focus-within {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.2), 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.input-wrapper:focus-within::before {
+    opacity: 0.05;
+}
+
+.input-wrapper.has-content {
+    border-color: var(--accent-primary);
+}
+
+.input-wrapper textarea {
+    flex: 1;
+    min-height: 28px;
+    max-height: 200px;
+    padding: 6px 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--text-primary);
+    resize: none;
+    line-height: 1.6;
+    position: relative;
+    z-index: 2;
+}
+
+.input-wrapper textarea::placeholder {
+    color: var(--text-muted);
+}
+
+.input-wrapper textarea:disabled {
+    opacity: 0.6;
+}
+
+.send-btn {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--text-muted);
+    cursor: not-allowed;
+    transition: all var(--transition-fast);
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+}
+
+.send-btn.active {
+    background: var(--accent-gradient);
+    border-color: transparent;
+    color: white;
+    cursor: pointer;
+}
+
+.send-btn.active:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 25px rgba(139, 92, 246, 0.5);
+}
+
+.send-btn.active:active {
+    transform: scale(0.95);
+}
+
+.send-btn-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+}
+
+.send-btn.active:hover .send-btn-glow {
+    opacity: 1;
+}
+
+.disclaimer {
+    text-align: center;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: 14px;
+    letter-spacing: 0.3px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .input-area {
+        padding: 16px;
+    }
+
+    .input-wrapper {
+        padding: 12px 14px;
+    }
+
+    .send-btn {
+        width: 40px;
+        height: 40px;
+    }
+}

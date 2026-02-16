@@ -1,0 +1,316 @@
+/* ===== Sidebar Component Styles ===== */
+
+.sidebar {
+    width: var(--sidebar-width);
+    height: 100vh;
+    background: var(--bg-secondary);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+}
+
+.sidebar-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: radial-gradient(ellipse at top, var(--glow-color) 0%, transparent 70%);
+    opacity: 0.3;
+    pointer-events: none;
+    animation: sidebarGlow 4s ease-in-out infinite;
+}
+
+@keyframes sidebarGlow {
+
+    0%,
+    100% {
+        opacity: 0.2;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+}
+
+.sidebar-header {
+    padding: 20px;
+    border-bottom: 1px solid var(--border-color);
+    position: relative;
+    z-index: 2;
+}
+
+.new-chat-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 24px;
+    background: var(--accent-gradient);
+    color: white;
+    border: none;
+    border-radius: var(--radius-lg);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    position: relative;
+    overflow: hidden;
+}
+
+.new-chat-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(139, 92, 246, 0.5);
+}
+
+.new-chat-btn:active {
+    transform: translateY(-1px);
+}
+
+.btn-shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: btnShine 3s infinite;
+}
+
+@keyframes btnShine {
+    0% {
+        left: -100%;
+    }
+
+    50%,
+    100% {
+        left: 100%;
+    }
+}
+
+.chat-history {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.empty-history {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.history-list {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.history-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    margin-bottom: 8px;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    position: relative;
+    overflow: hidden;
+    padding-right: 40px;
+    /* Space for delete button */
+}
+
+.history-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--accent-gradient);
+    transform: scaleY(0);
+    transition: transform var(--transition-fast);
+}
+
+.history-item:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+    transform: translateX(4px);
+}
+
+.history-item:hover::before {
+    transform: scaleY(1);
+}
+
+.history-item.active {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+}
+
+.history-item.active::before {
+    transform: scaleY(1);
+}
+
+.chat-icon {
+    flex-shrink: 0;
+    opacity: 0.6;
+}
+
+.history-item span {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Delete Button */
+.delete-chat-btn {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    display: none;
+    /* Hidden by default */
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-fast);
+}
+
+.history-item:hover .delete-chat-btn {
+    display: flex;
+}
+
+.delete-chat-btn:hover {
+    background: rgba(220, 38, 38, 0.2);
+    color: var(--accent-red);
+}
+
+/* Clear History Button */
+.clear-history-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+    padding: 10px;
+    background: transparent;
+    border: 1px dashed var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    width: 100%;
+}
+
+.clear-history-btn:hover {
+    border-color: var(--accent-red);
+    color: var(--accent-red);
+    background: rgba(220, 38, 38, 0.05);
+}
+
+.sidebar-footer {
+    padding: 20px;
+    border-top: 1px solid var(--border-color);
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.model-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 18px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-full);
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.model-indicator {
+    width: 8px;
+    height: 8px;
+    background: #10b981;
+    border-radius: 50%;
+    animation: indicatorPulse 2s infinite;
+}
+
+@keyframes indicatorPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+    }
+}
+
+.sidebar-credit {
+    text-align: center;
+    padding: 8px;
+    border-radius: var(--radius-md);
+    background: rgba(139, 92, 246, 0.1);
+    border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+.sidebar-credit p {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--accent-secondary);
+    margin-bottom: 2px;
+}
+
+.sidebar-credit span {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    opacity: 0.8;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 100;
+        transform: translateX(-100%);
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+        box-shadow: 4px 0 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .delete-chat-btn {
+        display: flex;
+        /* Always show on mobile */
+        opacity: 0.7;
+    }
+}

@@ -1,0 +1,361 @@
+/* ===== Welcome Screen Styles ===== */
+
+.welcome-screen {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background Effects */
+.welcome-bg-effects {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.floating-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    animation: floatOrb 8s ease-in-out infinite;
+}
+
+.orb-1 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.4) 0%, transparent 70%);
+    top: -100px;
+    left: -100px;
+    animation-delay: 0s;
+}
+
+.orb-2 {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(220, 38, 38, 0.3) 0%, transparent 70%);
+    bottom: -50px;
+    right: -50px;
+    animation-delay: -3s;
+}
+
+.orb-3 {
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation-delay: -5s;
+}
+
+@keyframes floatOrb {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    25% {
+        transform: translate(30px, -30px) scale(1.1);
+    }
+
+    50% {
+        transform: translate(-20px, 20px) scale(0.95);
+    }
+
+    75% {
+        transform: translate(20px, 30px) scale(1.05);
+    }
+}
+
+.grid-overlay {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(139, 92, 246, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(139, 92, 246, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(50px, 50px);
+    }
+}
+
+/* Content */
+.welcome-content {
+    text-align: center;
+    max-width: 700px;
+    position: relative;
+    z-index: 2;
+    animation: fadeInUp 0.8s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Logo Animation */
+.welcome-logo {
+    margin-bottom: 32px;
+}
+
+.welcome-icon-container {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+}
+
+width: 180px;
+height: 180px;
+display: flex;
+align-items: center;
+justify-content: center;
+filter: drop-shadow(0 0 30px rgba(139, 92, 246, 0.4));
+/* No default rotation here, it's in the animation class */
+}
+
+.square-wheel-anim {
+    animation: squareWheelRoll 3s linear infinite;
+}
+
+/* 
+  Square Wheel Physics:
+  When a square rotates, it lifts the center up at 45 degrees.
+  We conteract this by moving the object down at 45 degrees to simulate 'rolling on the floor'.
+  But user wants it to rotate AS a square wheel, so maybe just the bumping effect.
+*/
+@keyframes squareWheelRoll {
+    0% {
+        transform: rotate(0deg) translateY(0);
+    }
+
+    12.5% {
+        transform: rotate(45deg) translateY(-15px);
+    }
+
+    /* Corner hits ground, center goes UP */
+    25% {
+        transform: rotate(90deg) translateY(0);
+    }
+
+    /* Flat side, center goes DOWN */
+    37.5% {
+        transform: rotate(135deg) translateY(-15px);
+    }
+
+    50% {
+        transform: rotate(180deg) translateY(0);
+    }
+
+    62.5% {
+        transform: rotate(225deg) translateY(-15px);
+    }
+
+    75% {
+        transform: rotate(270deg) translateY(0);
+    }
+
+    87.5% {
+        transform: rotate(315deg) translateY(-15px);
+    }
+
+    100% {
+        transform: rotate(360deg) translateY(0);
+    }
+}
+
+.welcome-logo-svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.icon-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid;
+    animation: ringPulse 3s ease-out infinite;
+}
+
+.ring-1 {
+    width: 100%;
+    height: 100%;
+    border-color: rgba(139, 92, 246, 0.5);
+    animation-delay: 0s;
+}
+
+.ring-2 {
+    width: 130%;
+    height: 130%;
+    border-color: rgba(139, 92, 246, 0.3);
+    animation-delay: 0.5s;
+}
+
+.ring-3 {
+    width: 160%;
+    height: 160%;
+    border-color: rgba(139, 92, 246, 0.15);
+    animation-delay: 1s;
+}
+
+@keyframes ringPulse {
+    0% {
+        transform: scale(0.8);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* Title */
+.welcome-title {
+    font-size: 2.4rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+}
+
+.gradient-text {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% auto;
+    animation: gradientFlow 4s ease infinite;
+}
+
+@keyframes gradientFlow {
+
+    0%,
+    100% {
+        background-position: 0% center;
+    }
+
+    50% {
+        background-position: 100% center;
+    }
+}
+
+.welcome-description {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    margin-bottom: 48px;
+    line-height: 1.7;
+}
+
+/* Suggestion Cards */
+.suggestion-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.suggestion-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 24px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+    animation: cardFadeIn 0.6s ease backwards;
+}
+
+@keyframes cardFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.suggestion-card:hover {
+    background: var(--bg-hover);
+    border-color: var(--accent-primary);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(139, 92, 246, 0.25);
+}
+
+.card-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+}
+
+.suggestion-card:hover .card-glow {
+    opacity: 1;
+}
+
+.card-icon {
+    font-size: 1.8rem;
+    line-height: 1;
+}
+
+.suggestion-card span {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: color var(--transition-fast);
+}
+
+.suggestion-card:hover span {
+    color: var(--text-primary);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .welcome-title {
+        font-size: 1.8rem;
+    }
+
+    .welcome-description {
+        font-size: 1rem;
+        margin-bottom: 32px;
+    }
+
+    .suggestion-cards {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .suggestion-card {
+        padding: 16px 20px;
+    }
+}

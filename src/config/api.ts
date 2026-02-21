@@ -1,7 +1,7 @@
 // ===== API Configuration =====
 
 export const API_CONFIG = {
-    API_KEY: 'AIzaSyDDjsfi90LmYefs8gvq7SGSpoq9e5xSz2U',
+API_KEY: import.meta.env.VITE_GEMINI_API_KEY,
     // Kullanıcı "Gemini 3 Flash" istedi ancak şu an erişime açık en stabil ve yüksek kotalı model 1.5 Flash.
     // 2.0 Flash deneysel olduğu için kota sorunu yaşandı.
     API_URL: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent',

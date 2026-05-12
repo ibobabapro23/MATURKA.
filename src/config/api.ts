@@ -4,7 +4,7 @@ export const API_CONFIG = {
 API_KEY: "AIzaSyARNyvi9enJHGgy68Ue6AfY_ZN5gaoXF2w",
     // Kullanıcı "Gemini 3 Flash" istedi ancak şu an erişime açık en stabil ve yüksek kotalı model 1.5 Flash.
     // 2.0 Flash deneysel olduğu için kota sorunu yaşandı.
-    API_URL: 'https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent',
+    API_URL: 'https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent',
     SYSTEM_PROMPT: `Sen MATURKA V 4.2 adında bir yapay zeka asistanısın.
 
 ÖNEMLİ KİMLİK BİLGİLERİ:
